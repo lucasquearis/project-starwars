@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import getPlanets from '../services/Api';
 
-function Data() {
+const useData = () => {
   const [data, setData] = useState({});
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -10,7 +10,7 @@ function Data() {
     };
     fetchPlanets();
   }, []);
-  return [data, setData];
-}
+  return [data];
+};
 
-export default Data;
+export default useData;

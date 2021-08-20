@@ -1,36 +1,39 @@
-import React from 'react';
-import Data from '../hooks/Data';
+import React, { useContext } from 'react';
+import FilterContext from '../context/FilterContext';
 
 function Table() {
-  const [data] = Data([]);
-  if (!data.results) {
-    return (<h1>Loading...</h1>);
-  }
-  const resultsWithoutResidents = Object.keys(data.results[0])
-    .filter((item) => item !== 'residents');
-  // Aprendi a fazer a table com o Jossany e David Gonzaga!!
-  return (
-    <table>
-      <thead>
-        <tr>
-          {resultsWithoutResidents.map((key) => <th key={ key }>{ key }</th>)}
-        </tr>
-      </thead>
-      <tbody>
-        {data.results.map((planet) => (
-          <tr key={ planet.name }>
-            {resultsWithoutResidents.map((result) => (
-              <td
-                key={ planet[result] }
-              >
-                {planet[result]}
-              </td>
+  const value = useContext(FilterContext);
+  const { planets } = value;
+  if (planets.length > 0) {
+    const resultsWithoutResidents = Object.keys(planets[0])
+      .filter((item) => item !== 'residents');
+    // Aprendi a fazer a table com o Jossany e David Gonzaga!!
+    return (
+      <div>
+        <table>
+          <thead>
+            <tr>
+              {resultsWithoutResidents.map((key) => <th key={ key }>{ key }</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {planets.map((planet) => (
+              <tr key={ planet.name }>
+                {resultsWithoutResidents.map((result) => (
+                  <td
+                    key={ planet[result] }
+                  >
+                    {planet[result]}
+                  </td>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+  return (<h1>Loading...</h1>);
 }
 
 export default Table;
