@@ -33,7 +33,7 @@ function Table() {
       </div>
     );
   }
-  return (<h1>Loading...</h1>);
+  return (<h1>Nothing...</h1>);
 }
 
 export default Table;

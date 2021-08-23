@@ -4,31 +4,31 @@ import FilterContext from './FilterContext';
 import useData from '../hooks/useData';
 
 const Provider = ({ children }) => {
-  const [filterNameProvider, setFilterNameProvider] = useState([]);
+  const [filterNameProvider, setFilterNameProvider] = useState('');
   const [planets, setPlanets] = useState([]);
   const [data] = useData();
   const context = {
-    filterNameProvider,
+    filters: {
+      filterByName: {
+        name: filterNameProvider,
+      },
+    },
     setFilterNameProvider,
     planets,
   };
 
   useEffect(() => {
-    const handleFilter = () => {
-      const { filters } = filterNameProvider;
-      if (data.results) {
-        const { filterByName: { name: nameValue } } = filters;
+    if (data.results) {
+      const handleFilter = () => {
         let arrayFiltered = [...data.results];
         arrayFiltered = arrayFiltered.filter(({ name }) => name.toLowerCase()
-          .includes(nameValue.toLowerCase()));
+          .includes(filterNameProvider.toLowerCase()));
+        console.log(arrayFiltered);
         setPlanets(arrayFiltered);
-      }
-    };
-    handleFilter();
-  }, [data, filterNameProvider]);
-
-  // console.log(data.results);
-  // console.log(filterNameProvider);
+      };
+      handleFilter();
+    }
+  }, [data.results, filterNameProvider]);
 
   return (
     <FilterContext.Provider value={ context }>

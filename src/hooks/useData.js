@@ -7,6 +7,7 @@ const useData = () => {
     const fetchPlanets = async () => {
       const result = await getPlanets();
       setData(result);
+      console.log('api chamou');
     };
     fetchPlanets();
   }, []);
