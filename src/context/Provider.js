@@ -10,6 +10,7 @@ const Provider = ({ children }) => {
     'diameter', 'rotation_period', 'surface_water']);
   const [planets, setPlanets] = useState([]);
   const [data] = useData();
+  const [arrayFiltersSelected, setArrayFiltersSelected] = useState([]);
 
   useEffect(() => {
     if (data.results) {
@@ -22,7 +23,7 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     const filterArrayPlanets = () => {
-      if (data.results && valuesFormProvider.length > 0) {
+      if (data.results && valuesFormProvider) {
         let arrayFiltered = [...data.results];
         valuesFormProvider.forEach(({ column, comparison, value }) => {
           switch (comparison) {
@@ -58,6 +59,7 @@ const Provider = ({ children }) => {
     const filtredArrayOptions = options
       .filter((option) => !arrayOptions.includes(option));
     setColumnOptions(filtredArrayOptions);
+    setArrayFiltersSelected(arrayOptions);
   }, [valuesFormProvider]);
 
   const context = {
@@ -66,6 +68,7 @@ const Provider = ({ children }) => {
     valuesFormProvider,
     planets,
     columnOptions,
+    arrayFiltersSelected,
     filters: {
       filterByName: {
         name: filterNameProvider,

@@ -42,7 +42,7 @@ const Input = () => {
 
   useEffect(() => {
     setFilterNameProvider(nameInput);
-  });
+  }, [nameInput, setFilterNameProvider]);
 
   const handleClick = () => {
     setValuesFormProvider([...valuesFormProvider, valuesForm]);
