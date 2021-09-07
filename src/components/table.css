@@ -1,0 +1,30 @@
+.table {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.table thead, .table tbody, .table th, .table td, .table tr {
+  display: block;
+}
+
+.table td, .table th {
+  height: 35px;
+}
+
+.table thead {
+  float: left;
+}
+
+.table tbody {
+  -webkit-overflow-scrollng: touch;
+  overflow-x: auto;
+  position: relative;
+  white-space: nowrap;
+  width: auto;
+}
+
+.table tbody tr {
+  display: inline-block;
+}
+

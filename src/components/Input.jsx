@@ -61,7 +61,8 @@ const Input = () => {
   const handleSort = () => {
     const { sort, column } = sortOrder;
     if (sort && column) {
-      const sortedPlanets = planets.sort((a, b) => {
+      const sortedPlanets = [...planets];
+      sortedPlanets.sort((a, b) => {
         if (sort === 'ASC') return a[column] - b[column];
         if (sort === 'DESC') return b[column] - a[column];
         return false;
