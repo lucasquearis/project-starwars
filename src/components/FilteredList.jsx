@@ -8,9 +8,6 @@ const FilteredList = () => {
     setValuesFormProvider,
   } = useContext(FilterContext);
 
-  console.log(arrayFiltersSelected, 'ARRAY FILTROS');
-  console.log(valuesFormProvider);
-
   const handleClick = (option) => {
     const removeFilter = valuesFormProvider.filter((fil) => fil.column !== option);
     setValuesFormProvider(removeFilter);

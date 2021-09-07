@@ -11,20 +11,28 @@ const Provider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
   const [data] = useData();
   const [arrayFiltersSelected, setArrayFiltersSelected] = useState([]);
+  const [orderedPlanets, setOrderedPlanets] = useState([]);
 
   useEffect(() => {
-    if (data.results) {
-      let arrayFiltered = [...data.results];
+    if (data) {
+      let arrayFiltered = [...data];
       arrayFiltered = arrayFiltered.filter(({ name }) => name.toLowerCase()
         .includes(filterNameProvider.toLowerCase()));
       setPlanets(arrayFiltered);
     }
-  }, [data.results, filterNameProvider]);
+  }, [data, filterNameProvider]);
+
+  useEffect(() => {
+    const orderPlanets = () => {
+      setPlanets(orderedPlanets);
+    };
+    orderPlanets();
+  }, [orderedPlanets]);
 
   useEffect(() => {
     const filterArrayPlanets = () => {
-      if (data.results && valuesFormProvider) {
-        let arrayFiltered = [...data.results];
+      if (data && valuesFormProvider) {
+        let arrayFiltered = [...data];
         valuesFormProvider.forEach(({ column, comparison, value }) => {
           switch (comparison) {
           case 'maior que':
@@ -50,7 +58,7 @@ const Provider = ({ children }) => {
       }
     };
     filterArrayPlanets();
-  }, [data.results, valuesFormProvider]);
+  }, [data, valuesFormProvider]);
 
   useEffect(() => {
     const options = ['population', 'orbital_period',
@@ -65,6 +73,7 @@ const Provider = ({ children }) => {
   const context = {
     setFilterNameProvider,
     setValuesFormProvider,
+    setOrderedPlanets,
     valuesFormProvider,
     planets,
     columnOptions,
@@ -74,6 +83,10 @@ const Provider = ({ children }) => {
         name: filterNameProvider,
       },
       filterByNumericValues: valuesFormProvider,
+      order: {
+        column: 'Name',
+        short: 'ASC',
+      },
     },
   };
 
