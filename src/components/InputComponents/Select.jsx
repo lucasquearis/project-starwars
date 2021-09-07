@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Select = ({ testid, value, id, onChange, array, htmlFor, title }) => (
-  <label htmlFor={ htmlFor }>
+const Select = ({ testid, value, id, onChange, array, title, name }) => (
+  <label htmlFor={ testid }>
     { title }
     <select
+      name={ name }
       data-testid={ testid }
       value={ value }
       id={ id }

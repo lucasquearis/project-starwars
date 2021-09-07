@@ -1,30 +1,40 @@
-.table {
-  display: block;
-  position: relative;
-  width: 100%;
-}
+@media only screen and ( max-width : 1970px ) {
 
-.table thead, .table tbody, .table th, .table td, .table tr {
-  display: block;
-}
+  .table {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
 
-.table td, .table th {
-  height: 35px;
-}
 
-.table thead {
-  float: left;
-}
+  .table thead, .table tbody, .table th, .table td, .table tr {
+    display: block;
+  }
 
-.table tbody {
-  -webkit-overflow-scrollng: touch;
-  overflow-x: auto;
-  position: relative;
-  white-space: nowrap;
-  width: auto;
-}
+  .table td, .table th {
+    border-right: 1px solid yellow;
+    height: 35px;
+  }
 
-.table tbody tr {
-  display: inline-block;
-}
+  .table thead {
+    float: left;
+  }
 
+  .table tbody {
+    -webkit-overflow-scrollng: touch;
+    overflow-x: auto;
+    position: relative;
+    scroll-snap-type: x mandatory;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  .table tbody tr {
+    display: inline-block;
+    overflow-wrap: break-word;
+    scroll-snap-align: start;
+    width: 70vw;
+    word-wrap: break-word;
+  }
+
+}
