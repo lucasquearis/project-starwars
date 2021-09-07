@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RadioInput = ({ id, title, testid, onChange }) => (
-  <label htmlFor={ id }>
+  <label className="form-check-label" htmlFor={ id }>
     { title }
     <input
       name="sort"

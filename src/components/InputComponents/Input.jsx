@@ -88,7 +88,7 @@ const Input = () => {
   ));
 
   return (
-    <div className="forms-container">
+    <div className="forms-container mb-3">
       <form className="row g-3">
         <div className="col-auto">
           <InputNameAndValue

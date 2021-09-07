@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const Button = ({ testid, onClick, title }) => (
   <button
+    className="btn btn-outline-warning"
     type="button"
     data-testid={ testid }
     onClick={ onClick }

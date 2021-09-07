@@ -13,6 +13,7 @@ const InputNameAndValue = ({
   <label htmlFor="filterByName">
     { title }
     <input
+      className="form-control"
       type={ type }
       value={ valueForm }
       id={ id }
