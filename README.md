@@ -1,4 +1,4 @@
-# Projeto Trybe Wallet
+# Projeto Starwars Planets Search em context api e hooks
 
 Esse projeto utilizo o Context API e Hooks, uma ferramente de manipulação de estado global, um framework muito útil para evitar a famosa Prop Hell.
 
